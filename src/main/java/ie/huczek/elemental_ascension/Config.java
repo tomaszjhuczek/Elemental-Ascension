@@ -1,4 +1,4 @@
-package ie.huczek;
+package ie.huczek.elemental_ascension;
 
 import java.util.List;
 import java.util.Set;
