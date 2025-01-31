@@ -1,7 +1,7 @@
-package ie.huczek.elemental_ascension.registry;
+package ie.huczek.elemental_ascension.common.registry;
 
 import ie.huczek.elemental_ascension.ElementalAscension;
-import ie.huczek.elemental_ascension.item.DebugWandItem;
+import ie.huczek.elemental_ascension.common.item.DebugWandItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
