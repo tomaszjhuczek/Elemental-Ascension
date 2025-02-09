@@ -2,6 +2,9 @@ package ie.huczek.elemental_ascension.common.item;
 
 import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
+import ie.huczek.elemental_ascension.common.block.block_entity.AltarBlockEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -45,6 +48,9 @@ public class DebugWandItem extends Item {
             try {
                 blockEntity.getBlockState();
                 LOGGER.info(blockEntity.toString());
+                if (blockEntity instanceof AltarBlockEntity) {
+                    LOGGER.info(((AltarBlockEntity) blockEntity).getEnergyStored().toString());
+                }
             } catch (Exception e) {
                 LOGGER.warning("Failed to get Block Entity: ");
                 LOGGER.warning(e.toString());

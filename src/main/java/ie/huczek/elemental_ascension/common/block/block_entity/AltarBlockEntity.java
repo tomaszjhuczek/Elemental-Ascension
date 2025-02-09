@@ -1,6 +1,5 @@
 package ie.huczek.elemental_ascension.common.block.block_entity;
 
-import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.registry.BlockEntityRegistry;
 import ie.huczek.elemental_ascension.common.util.ElementType;
 import ie.huczek.elemental_ascension.common.util.IElementalEnergy;
@@ -10,12 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.neoforge.registries.NewRegistryEvent;
-import org.jetbrains.annotations.Nullable;
-
-import java.sql.Array;
-import java.util.function.Supplier;
 
 public class AltarBlockEntity extends BlockEntity implements IElementalEnergy {
     
@@ -43,4 +36,15 @@ public class AltarBlockEntity extends BlockEntity implements IElementalEnergy {
             tag.putInt(elementType.getName(), energy[elementType.ordinal()]);
         }
     }
+    
+    //For Debugging
+    public StringBuilder getEnergyStored() {
+        StringBuilder energyLevels = new StringBuilder(new String());
+        for (ElementType elementType : ElementType.values()) {
+            energyLevels.append(elementType.getName()).append(": ").append(energy[elementType.ordinal()]).append("\n");
+        }
+        return energyLevels;
+        
+    }
 }
+
