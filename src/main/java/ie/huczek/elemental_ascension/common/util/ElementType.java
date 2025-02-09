@@ -1,6 +1,6 @@
 package ie.huczek.elemental_ascension.common.util;
 
-public enum ElementTypes {
+public enum ElementType {
     //Primary Types
     AIR,
     EARTH,

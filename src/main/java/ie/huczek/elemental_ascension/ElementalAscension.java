@@ -1,5 +1,6 @@
 package ie.huczek.elemental_ascension;
 
+import ie.huczek.elemental_ascension.common.registry.BlockEntityRegistry;
 import ie.huczek.elemental_ascension.common.registry.BlockRegistry;
 import ie.huczek.elemental_ascension.common.registry.ItemRegistry;
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ public class ElementalAscension {
         NeoForge.EVENT_BUS.register(this);
         BlockRegistry.BLOCKS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
+        BlockEntityRegistry.BLOCK_ENTITY_TYPES.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

@@ -1,6 +1,6 @@
 package ie.huczek.elemental_ascension.common.block;
 
-import ie.huczek.elemental_ascension.common.util.ElementTypes;
+import ie.huczek.elemental_ascension.common.util.ElementType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 
@@ -8,8 +8,8 @@ import javax.annotation.Nullable;
 
 public class RuneBlock extends Block implements IRuneBlock {
     
-    private final ElementTypes rune_type;
-    public RuneBlock(ElementTypes element, Properties properties) {
+    private final ElementType rune_type;
+    public RuneBlock(ElementType element, Properties properties) {
         super(properties
                 .destroyTime(3.5f)
                 .explosionResistance(6)
@@ -20,7 +20,7 @@ public class RuneBlock extends Block implements IRuneBlock {
     
     @Nullable
     @Override
-    public ElementTypes getRuneType() {
+    public ElementType getRuneType() {
         return this.rune_type;
     }
 }

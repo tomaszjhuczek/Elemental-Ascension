@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,13 +36,22 @@ public class DebugWandItem extends Item {
         BlockPos pos = context.getClickedPos();
         BlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
+        BlockEntity blockEntity = world.getBlockEntity(pos);
         
         if (block instanceof RuneBlock) {
             LOGGER.info("Rune Type: " + ((RuneBlock) block).getRuneType().toString());
             LOGGER.info(state.toString());
         } else {
-            LOGGER.info(state.getBlock().toString());
+            try {
+                blockEntity.getBlockState();
+                LOGGER.info(blockEntity.toString());
+            } catch (Exception e) {
+                LOGGER.warning("Failed to get Block Entity: ");
+                LOGGER.warning(e.toString());
+            }
+                LOGGER.info(state.getBlock().toString());
         }
+        
         return InteractionResult.PASS;
     }
 }
