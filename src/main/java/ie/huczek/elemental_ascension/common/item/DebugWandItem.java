@@ -2,6 +2,7 @@ package ie.huczek.elemental_ascension.common.item;
 
 import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
+import ie.huczek.elemental_ascension.common.block.block_entity.AbstractEnergyContainer;
 import ie.huczek.elemental_ascension.common.block.block_entity.AltarBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -36,9 +37,9 @@ public class DebugWandItem extends Item {
         }
         if (blockEntity != null) {
             LOGGER.info(blockEntity.toString());
-            if (blockEntity instanceof AltarBlockEntity) {
-                LOGGER.info("Max Capacity: " + ((AltarBlockEntity) blockEntity).getMaxCapacity());
-                LOGGER.info(((AltarBlockEntity) blockEntity).getEnergyStored().toString());
+            if (blockEntity instanceof AbstractEnergyContainer) {
+                LOGGER.info("Max Capacity: " + ((AbstractEnergyContainer) blockEntity).getMaxCapacity());
+                LOGGER.info(((AbstractEnergyContainer) blockEntity).getEnergyStored().toString());
             }
         }
         LOGGER.info(state.getBlock().toString());

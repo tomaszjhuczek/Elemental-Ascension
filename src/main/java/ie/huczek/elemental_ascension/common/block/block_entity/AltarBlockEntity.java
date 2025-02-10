@@ -5,15 +5,17 @@ import ie.huczek.elemental_ascension.common.util.ElementType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class AltarBlockEntity extends AbstractEnergyContainer implements IElementalEnergyContainer {
+    
 
-
-    public AltarBlockEntity(BlockPos pos,  BlockState blockState) {
-        super(BlockEntityRegistry.ALTAR_BLOCK_ENTITY.get(),  pos, blockState);
+    public AltarBlockEntity(BlockPos pos, BlockState blockState) {
+        super(BlockEntityRegistry.ALTAR_BLOCK_ENTITY.get(), pos, blockState);
     }
+
 
     @Override
     protected void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
@@ -25,18 +27,7 @@ public class AltarBlockEntity extends AbstractEnergyContainer implements IElemen
         super.saveAdditional(tag, registries);
     }
 
-    //For Debugging
-    public StringBuilder getEnergyStored() {
-        StringBuilder energyLevels = new StringBuilder();
-        for (ElementType elementType : ElementType.values()) {
-            energyLevels.append(elementType.getName()).append(": ").append(energy[elementType.ordinal()]).append("\n");
-        }
-        return energyLevels;
-        
-    }
     
-    public int getMaxCapacity() {
-        return MAX_CAPACITY;
-    }
+    
 }
 

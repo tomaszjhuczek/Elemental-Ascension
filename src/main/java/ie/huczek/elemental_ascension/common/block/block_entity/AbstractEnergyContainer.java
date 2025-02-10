@@ -1,24 +1,60 @@
 package ie.huczek.elemental_ascension.common.block.block_entity;
 
+import ie.huczek.elemental_ascension.api.elemental_energy.EnergyReceiver;
 import ie.huczek.elemental_ascension.common.util.ElementType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractEnergyContainer extends BlockEntity implements IElementalEnergyContainer {
+public abstract class AbstractEnergyContainer extends BlockEntity implements IElementalEnergyContainer, EnergyReceiver {
 
     protected int[] energy = new int[ElementType.values().length];
-    protected final int MAX_CAPACITY;
+    protected int maxCapacity;
     public AbstractEnergyContainer(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.MAX_CAPACITY = 100;
     }
 
+    public void recieveEnergy(@NotNull ElementType energyType, int amount) {
+        this.energy[energyType.ordinal()] = Math.min(this.energy[energyType.ordinal()] + amount, getMaxCapacity());
+    }
+    
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
 
+    public void setMaxCapacity(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
+    
+    @Override
+    public Level ReceiverLevel() {
+        return null;
+    }
+
+    @Override
+    public BlockPos getReceiverPos() {
+        return null;
+    }
+
+    @Override
+    public boolean isFull(ElementType elementType) {
+        return (energy[elementType.ordinal()] >= maxCapacity);
+    }
+    
+    public StringBuilder getEnergyStored() {
+        StringBuilder energyLevels = new StringBuilder();
+        for (ElementType elementType : ElementType.values()) {
+            energyLevels.append(elementType.getName()).append(": ").append(energy[elementType.ordinal()]).append("\n");
+        }
+        return energyLevels;
+
+    }
+    
     @Override
     protected void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.loadAdditional(tag, registries);
@@ -31,7 +67,7 @@ public abstract class AbstractEnergyContainer extends BlockEntity implements IEl
     protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.saveAdditional(tag, registries);
         for(ElementType elementType : ElementType.values()) {
-            if (energy[elementType.ordinal()] <= MAX_CAPACITY) {
+            if (energy[elementType.ordinal()] <= maxCapacity) {
                 tag.putInt(elementType.getName(), energy[elementType.ordinal()]);
             }
         }

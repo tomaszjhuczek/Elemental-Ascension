@@ -1,6 +1,7 @@
 package ie.huczek.elemental_ascension.common.registry;
 
 import ie.huczek.elemental_ascension.common.block.AltarBlock;
+import ie.huczek.elemental_ascension.common.block.DebugEnergySourceBlock;
 import ie.huczek.elemental_ascension.common.util.ElementType;
 import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
@@ -27,5 +28,6 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> RUNE_DEATH = BLOCKS.register("rune.death", () -> new RuneBlock(ElementType.DEATH, BlockBehaviour.Properties.of()));
     
     public static final DeferredBlock<Block> ALTAR_BLOCK = BLOCKS.register("altar_block", () -> new AltarBlock(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> DEBUG_SOURCE = BLOCKS.register("debug_source_block", () -> new DebugEnergySourceBlock(BlockBehaviour.Properties.of()));
     
 }
