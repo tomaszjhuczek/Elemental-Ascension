@@ -4,9 +4,7 @@ import ie.huczek.elemental_ascension.common.util.ElementType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 
-import javax.annotation.Nullable;
-
-public class RuneBlock extends Block implements IRuneBlock {
+public class RuneBlock extends Block implements IElementBlock {
     
     private final ElementType rune_type;
     public RuneBlock(ElementType element, Properties properties) {
@@ -18,7 +16,6 @@ public class RuneBlock extends Block implements IRuneBlock {
         this.rune_type = element;
     }
     
-    @Nullable
     @Override
     public ElementType getRuneType() {
         return this.rune_type;

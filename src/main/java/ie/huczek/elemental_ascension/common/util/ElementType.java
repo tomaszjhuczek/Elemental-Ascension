@@ -1,5 +1,7 @@
 package ie.huczek.elemental_ascension.common.util;
 
+import org.jetbrains.annotations.NotNull;
+
 public enum ElementType {
     //Primary Types
     AIR,
@@ -14,6 +16,7 @@ public enum ElementType {
     LIFE,
     DEATH;
     
+    @NotNull
     public String getName() {
         return this.toString();
     }
