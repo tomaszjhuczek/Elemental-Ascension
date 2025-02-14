@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "elemental_ascension:block/garden_gnome"
+    },
+    "facing=south": {
+      "model": "elemental_ascension:block/garden_gnome",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "elemental_ascension:block/garden_gnome",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "elemental_ascension:block/garden_gnome",
+      "y": 270
+    }
+  }
+}

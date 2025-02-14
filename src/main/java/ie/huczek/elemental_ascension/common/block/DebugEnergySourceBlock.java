@@ -23,10 +23,8 @@ public class DebugEnergySourceBlock extends Block implements EntityBlock {
         return new DebugEnergySourceBlockEntity(blockPos, blockState);
     }
     
-//    TODO: Implement a proper ticker (NeoForge docs suck in that regard or I am an idiot)
-    @SuppressWarnings("unchecked")
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return type == BlockEntityRegistry.DEBUG_SOURCE.get() ? (BlockEntityTicker<T>) DebugEnergySourceBlockEntity::tick : null;
+        return type == BlockEntityRegistry.DEBUG_SOURCE.get() ? DebugEnergySourceBlockEntity::tick : null;
     }
 }

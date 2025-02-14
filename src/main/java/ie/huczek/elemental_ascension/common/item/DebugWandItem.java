@@ -3,7 +3,6 @@ package ie.huczek.elemental_ascension.common.item;
 import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
 import ie.huczek.elemental_ascension.common.block.block_entity.AbstractEnergyContainer;
-import ie.huczek.elemental_ascension.common.block.block_entity.AltarBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
