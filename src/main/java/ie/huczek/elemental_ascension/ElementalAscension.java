@@ -23,7 +23,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 @Mod(ElementalAscension.MODID)
 public class ElementalAscension {
     public static final String MODID = "elemental_ascension";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public ElementalAscension(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);

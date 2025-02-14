@@ -1,6 +1,5 @@
 package ie.huczek.elemental_ascension.common.block;
 
-import ie.huczek.elemental_ascension.common.block.block_entity.AbstractEnergyContainer;
 import ie.huczek.elemental_ascension.common.block.block_entity.DebugEnergySourceBlockEntity;
 import ie.huczek.elemental_ascension.common.registry.BlockEntityRegistry;
 import net.minecraft.core.BlockPos;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.service.ISyntheticClassInfo;
 
 public class DebugEnergySourceBlock extends Block implements EntityBlock {
     
@@ -26,9 +24,9 @@ public class DebugEnergySourceBlock extends Block implements EntityBlock {
     }
     
 //    TODO: Implement a proper ticker (NeoForge docs suck in that regard or I am an idiot)
-//    @SuppressWarnings("unchecked")
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-//        
-//    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return type == BlockEntityRegistry.DEBUG_SOURCE.get() ? (BlockEntityTicker<T>) DebugEnergySourceBlockEntity::tick : null;
+    }
 }
