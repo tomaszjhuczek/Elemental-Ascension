@@ -4,7 +4,9 @@ import ie.huczek.elemental_ascension.ElementalAscension;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
 import ie.huczek.elemental_ascension.common.block.block_entity.AbstractEnergyContainer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -24,24 +26,31 @@ public class DebugWandItem extends Item {
     @Override
     public @NotNull InteractionResult useOn(UseOnContext context) {
         final Logger LOGGER = Logger.getLogger(ElementalAscension.MODID + "Debug Wand");
-        Level world = context.getLevel();
+        Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        BlockState state = world.getBlockState(pos);
+        BlockState state = level.getBlockState(pos);
         Block block = state.getBlock();
-        BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        Player player = context.getPlayer();
+        assert player != null;
         
-        if (block instanceof RuneBlock) {
-            LOGGER.info("Rune Type: " + ((RuneBlock) block).getRuneType().toString());
-            LOGGER.info(state.toString());
-        }
-        if (blockEntity != null) {
-            LOGGER.info(blockEntity.toString());
-            if (blockEntity instanceof AbstractEnergyContainer) {
-                LOGGER.info("Max Capacity: " + ((AbstractEnergyContainer) blockEntity).getMaxCapacity());
-                LOGGER.info(((AbstractEnergyContainer) blockEntity).getEnergyStored().toString());
+        if (level.isClientSide) {
+            if (block instanceof RuneBlock runeBlock) {
+                LOGGER.info(state.toString());
+                player.sendSystemMessage(Component.literal("Type: " + runeBlock.getRuneType().getName().toLowerCase()));
+                return InteractionResult.PASS;
             }
+            if (blockEntity != null) {
+                LOGGER.info(blockEntity.toString());
+                if (blockEntity instanceof AbstractEnergyContainer) {
+                    LOGGER.info("Max Capacity: " + ((AbstractEnergyContainer) blockEntity).getMaxCapacity());
+                    LOGGER.info(((AbstractEnergyContainer) blockEntity).getEnergyStored().toString());
+                    return InteractionResult.PASS;
+                }
+            }
+            LOGGER.info(state.getBlock().toString());
+            return InteractionResult.PASS;
         }
-        LOGGER.info(state.getBlock().toString());
         return InteractionResult.PASS;
     }
 }
