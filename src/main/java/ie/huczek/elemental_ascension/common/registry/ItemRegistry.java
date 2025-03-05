@@ -17,4 +17,5 @@ public class ItemRegistry {
     
     //Block Items
     public static final Supplier<BlockItem> GNOME_BOMB = ITEMS.registerSimpleBlockItem("garden_gnome", BlockRegistry.GNOME_BOMB);
+    public static final Supplier<BlockItem> DEBUG_SOURCE = ITEMS.registerSimpleBlockItem("debug_source", BlockRegistry.DEBUG_SOURCE);
 }
