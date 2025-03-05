@@ -12,7 +12,7 @@ public class DebugEnergySourceBlockEntity extends AbstractEnergyContainer implem
     
     public DebugEnergySourceBlockEntity(BlockPos pos, BlockState blockState) {
         super(BlockEntityRegistry.DEBUG_SOURCE.get(), pos, blockState);
-        this.maxCapacity = 10000;
+        this.maxCapacity = 1000000;
     }
 
     int clock;
@@ -22,16 +22,15 @@ public class DebugEnergySourceBlockEntity extends AbstractEnergyContainer implem
 
     private void generateEnergy(BlockPos pos) {
         if (clock % 200 == 0) {
-            ElementalAscension.LOGGER.info("Block at: {} Generated", pos.toString());
             for (ElementType elementType : ElementType.values()) {
-                this.energy[elementType.ordinal()] = Math.min(this.energy[elementType.ordinal()] + 100, maxCapacity);
+                this.energy[elementType.ordinal()] = Math.min(this.energy[elementType.ordinal()] + 10000, maxCapacity);
             }
         }
     }
-    public static <T extends BlockEntity> void tick(Level level, BlockPos pos, BlockState state, T blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         DebugEnergySourceBlockEntity debugEnergySourceBlock = (DebugEnergySourceBlockEntity) blockEntity;
         debugEnergySourceBlock.generateEnergy(pos);
         debugEnergySourceBlock.tickClock();
     }
-    
+
 }
