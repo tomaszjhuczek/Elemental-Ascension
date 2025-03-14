@@ -15,18 +15,16 @@ public class BlockRegistry {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ElementalAscension.MODID);
     
     //Primary Runes
-    public static final DeferredBlock<Block> RUNE_AIR = BLOCKS.register("rune.air", () -> new RuneBlock(ElementType.AIR, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_EARTH = BLOCKS.register("rune.earth", () -> new RuneBlock(ElementType.EARTH, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_FIRE = BLOCKS.register("rune.fire", () -> new RuneBlock(ElementType.FIRE, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_WATER = BLOCKS.register("rune.water", () -> new RuneBlock(ElementType.WATER, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> AIR_RUNE = BLOCKS.register("air_rune", () -> new RuneBlock(ElementType.AIR, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> EARTH_RUNE = BLOCKS.register("earth_rune", () -> new RuneBlock(ElementType.EARTH, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> FIRE_RUNE = BLOCKS.register("fire_rune", () -> new RuneBlock(ElementType.FIRE, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> WATER_RUNE = BLOCKS.register("water_rune", () -> new RuneBlock(ElementType.WATER, BlockBehaviour.Properties.of()));
     
     //Secondary Runes
-    public static final DeferredBlock<Block> RUNE_LIGHT = BLOCKS.register("rune.light", () -> new RuneBlock(ElementType.LIGHT, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_DARK = BLOCKS.register("rune.dark", () -> new RuneBlock(ElementType.DARK, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_STRENGTH = BLOCKS.register("rune.strength", () -> new RuneBlock(ElementType.STRENGTH, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_WEAKNESS = BLOCKS.register("rune.weakness", () -> new RuneBlock(ElementType.WEAKNESS, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_LIFE = BLOCKS.register("rune.life", () -> new RuneBlock(ElementType.LIFE, BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> RUNE_DEATH = BLOCKS.register("rune.death", () -> new RuneBlock(ElementType.DEATH, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> LIGHT_RUNE = BLOCKS.register("light_rune", () -> new RuneBlock(ElementType.LIGHT, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> DARK_RUNE = BLOCKS.register("dark_rune", () -> new RuneBlock(ElementType.DARK, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> LIFE_RUNE = BLOCKS.register("life_rune", () -> new RuneBlock(ElementType.LIFE, BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> DEATH_RUNE = BLOCKS.register("death_rune", () -> new RuneBlock(ElementType.DEATH, BlockBehaviour.Properties.of()));
     
     public static final DeferredBlock<Block> ALTAR_BLOCK = BLOCKS.register("altar_block", () -> new AltarBlock(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> DEBUG_SOURCE = BLOCKS.register("debug_source_block", () -> new DebugEnergySourceBlock(BlockBehaviour.Properties.of()));

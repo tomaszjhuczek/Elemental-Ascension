@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "elemental_ascension:block/debug_source_block"
+    }
+  }
+}

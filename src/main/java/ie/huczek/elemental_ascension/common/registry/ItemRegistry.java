@@ -17,5 +17,9 @@ public class ItemRegistry {
     
     //Block Items
     public static final Supplier<BlockItem> GNOME_BOMB = ITEMS.registerSimpleBlockItem("garden_gnome", BlockRegistry.GNOME_BOMB);
-    public static final Supplier<BlockItem> DEBUG_SOURCE = ITEMS.registerSimpleBlockItem("debug_source", BlockRegistry.DEBUG_SOURCE);
+    public static final Supplier<BlockItem> DEBUG_SOURCE = ITEMS.registerSimpleBlockItem("debug_source_block", BlockRegistry.DEBUG_SOURCE);
+    public static final Supplier<BlockItem> AIR_RUNE = ITEMS.registerSimpleBlockItem("air_rune", BlockRegistry.AIR_RUNE);
+    public static final Supplier<BlockItem> WATER_RUNE = ITEMS.registerSimpleBlockItem("water_rune", BlockRegistry.WATER_RUNE);
+    public static final Supplier<BlockItem> FIRE_RUNE = ITEMS.registerSimpleBlockItem("fire_rune", BlockRegistry.FIRE_RUNE);
+    public static final Supplier<BlockItem> EARTH_RUNE = ITEMS.registerSimpleBlockItem("earth_rune", BlockRegistry.EARTH_RUNE);
 }
