@@ -24,4 +24,7 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> WATER_RUNE = ITEMS.registerSimpleBlockItem("water_rune", BlockRegistry.WATER_RUNE);
     public static final Supplier<BlockItem> FIRE_RUNE = ITEMS.registerSimpleBlockItem("fire_rune", BlockRegistry.FIRE_RUNE);
     public static final Supplier<BlockItem> EARTH_RUNE = ITEMS.registerSimpleBlockItem("earth_rune", BlockRegistry.EARTH_RUNE);
+
+    public static final Supplier<BlockItem> ENERGY_RELAY = ITEMS.registerSimpleBlockItem("energy_relay", BlockRegistry.ENERGY_RELAY);
+    public static final Supplier<BlockItem> ADVANCED_ENERGY_RELAY = ITEMS.registerSimpleBlockItem("advanced_energy_relay", BlockRegistry.ADVANCED_ENERGY_RELAY);
 }

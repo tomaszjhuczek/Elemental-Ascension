@@ -11,8 +11,12 @@ public class VectorMathHelper {
         return b.distance(a);
     }
 
-    public static BlockPos getRelativePos(BlockPos posA, BlockPos posB) {
+    public static BlockPos getRelative(BlockPos posA, BlockPos posB) {
         return posA.subtract(posB);
+    }
+
+    public static BlockPos getNearbyBlockPos(BlockPos pos, int x, int y, int z) {
+        return new BlockPos(pos.getX()+x, pos.getY()+y, pos.getZ()+z);
     }
 
     public static int[] vecToArray(BlockPos pos) {

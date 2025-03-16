@@ -64,17 +64,17 @@ public abstract class AbstractEnergyContainer extends BlockEntity implements Ene
         return energyLevels;
 
     }
-    
+
+    public boolean isMultiplex() {
+        return this.isMultiplex;
+    }
+
     @Override
     protected void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.loadAdditional(tag, registries);
         for(ElementType elementType : ElementType.values()) {
             energy[elementType.ordinal()] = tag.getInt(elementType.getName());
         }
-    }
-
-    public boolean isMultiplex() {
-        return this.isMultiplex;
     }
 
     @Override

@@ -24,7 +24,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent(ItemRegistry.GNOME_BOMB.get().toString(), modLoc("block/garden_gnome"));
 
-        basicItem(ItemRegistry.DEBUG_WAND.get());
+        handheldItem(ItemRegistry.DEBUG_WAND.get());
+        handheldItem(ItemRegistry.BINDING_WAND.get());
 
         withExistingParent(ItemRegistry.DEBUG_SOURCE.get().toString(), modLoc("block/debug_source_block"));
         withExistingParent(ItemRegistry.AIR_RUNE.get().toString(), modLoc("block/air_rune"));

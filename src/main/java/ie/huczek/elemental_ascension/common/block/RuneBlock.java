@@ -4,7 +4,7 @@ import ie.huczek.elemental_ascension.common.util.ElementType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 
-public class RuneBlock extends Block implements IElementBlock {
+public class RuneBlock extends Block {
     
     private final ElementType rune_type;
     public RuneBlock(ElementType element, Properties properties) {
@@ -15,8 +15,7 @@ public class RuneBlock extends Block implements IElementBlock {
                 .lightLevel(state -> 7));
         this.rune_type = element;
     }
-    
-    @Override
+
     public ElementType getRuneType() {
         return this.rune_type;
     }

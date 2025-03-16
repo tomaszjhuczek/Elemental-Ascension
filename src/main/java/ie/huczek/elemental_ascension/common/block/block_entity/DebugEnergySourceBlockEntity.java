@@ -3,15 +3,12 @@ package ie.huczek.elemental_ascension.common.block.block_entity;
 import ie.huczek.elemental_ascension.common.block.RuneBlock;
 import ie.huczek.elemental_ascension.common.registry.BlockEntityRegistry;
 import ie.huczek.elemental_ascension.common.util.ElementType;
+import ie.huczek.elemental_ascension.common.util.VectorMathHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-
-import static ie.huczek.elemental_ascension.ElementalAscension.LOGGER;
-import static ie.huczek.elemental_ascension.common.util.VectorMathHelper.getDistance;
-import static ie.huczek.elemental_ascension.common.util.VectorMathHelper.getRelativePos;
 
 public class DebugEnergySourceBlockEntity extends AbstractEnergyTransmitter implements IAttunable, ITransmittable {
     private ElementType attunedElement;
@@ -43,8 +40,7 @@ public class DebugEnergySourceBlockEntity extends AbstractEnergyTransmitter impl
 
     @Override
     public void checkAttunement(Level level, BlockPos pos) {
-        BlockPos runePos = new BlockPos(pos.getX(), pos.getY()+1, pos.getZ());
-        Block rune = level.getBlockState(runePos).getBlock();
+        Block rune = level.getBlockState(VectorMathHelper.getNearbyBlockPos(pos, 0, 1, 0)).getBlock();
         this.attunedElement = (rune instanceof RuneBlock) ? ((RuneBlock) rune).getRuneType() : null;
     }
 

@@ -16,7 +16,8 @@ public class RelayBlock extends Block implements EntityBlock {
 
 
     public RelayBlock(Properties properties) {
-        super(properties);
+        super(properties
+                .noOcclusion());
     }
 
     @Override

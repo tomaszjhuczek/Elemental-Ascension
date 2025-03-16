@@ -5,23 +5,17 @@ import ie.huczek.elemental_ascension.common.util.VectorMathHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
-
 import static ie.huczek.elemental_ascension.ElementalAscension.LOGGER;
 import static ie.huczek.elemental_ascension.common.util.VectorMathHelper.getDistance;
-import static ie.huczek.elemental_ascension.common.util.VectorMathHelper.getRelativePos;
+import static ie.huczek.elemental_ascension.common.util.VectorMathHelper.getRelative;
 
 public abstract class AbstractEnergyTransmitter extends AbstractEnergyContainer implements ITransmittable {
-
 
     private final static short MAX_RANGE = 32;
     protected BlockPos targetBlock = new BlockPos(BlockPos.ZERO);
@@ -38,7 +32,7 @@ public abstract class AbstractEnergyTransmitter extends AbstractEnergyContainer 
 
     @Override
     public void setTargetBlock(BlockPos sourcePos, BlockPos targetPos) {
-        BlockPos relativePos = getRelativePos(sourcePos, targetPos);
+        BlockPos relativePos = getRelative(sourcePos, targetPos);
         double distance = getDistance(sourcePos, targetPos);
         if (relativePos == BlockPos.ZERO) {
             LOGGER.info("Position Reset");
@@ -46,15 +40,9 @@ public abstract class AbstractEnergyTransmitter extends AbstractEnergyContainer 
         if (distance > MAX_RANGE) {
             LOGGER.warn("Cannot set position, distance too large");
             this.targetBlock = sourcePos;
+        } else {
+            this.targetBlock = targetPos;
         }
-
-        this.targetBlock = targetPos;
-
-    }
-
-    @Override
-    public void sendEnergy(Level level) {
-
     }
 
     @Override

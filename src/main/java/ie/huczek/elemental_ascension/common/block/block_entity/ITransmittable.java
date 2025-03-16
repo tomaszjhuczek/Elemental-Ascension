@@ -11,6 +11,5 @@ public interface ITransmittable {
 
     void setTargetBlock(BlockPos pos, BlockPos vector);
 
-    void sendEnergy(Level level);
     void sendEnergy(Level level, ElementType elementType);
 }
