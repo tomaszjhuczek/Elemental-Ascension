@@ -1,6 +1,7 @@
 package ie.huczek.elemental_ascension.common.registry;
 
 import ie.huczek.elemental_ascension.ElementalAscension;
+import ie.huczek.elemental_ascension.common.item.BindingWandItem;
 import ie.huczek.elemental_ascension.common.item.DebugWandItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -14,6 +15,7 @@ public class ItemRegistry {
     
     
     public static final Supplier<Item> DEBUG_WAND = ITEMS.registerItem("debug_wand", DebugWandItem::new);
+    public static final Supplier<Item> BINDING_WAND = ITEMS.registerItem("binding_wand", BindingWandItem::new);
     
     //Block Items
     public static final Supplier<BlockItem> GNOME_BOMB = ITEMS.registerSimpleBlockItem("garden_gnome", BlockRegistry.GNOME_BOMB);

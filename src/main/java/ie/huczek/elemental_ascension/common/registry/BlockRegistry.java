@@ -1,11 +1,8 @@
 package ie.huczek.elemental_ascension.common.registry;
 
-import ie.huczek.elemental_ascension.common.block.AltarBlock;
-import ie.huczek.elemental_ascension.common.block.DebugEnergySourceBlock;
-import ie.huczek.elemental_ascension.common.block.GnomeBombBlock;
+import ie.huczek.elemental_ascension.common.block.*;
 import ie.huczek.elemental_ascension.common.util.ElementType;
 import ie.huczek.elemental_ascension.ElementalAscension;
-import ie.huczek.elemental_ascension.common.block.RuneBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -29,5 +26,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> ALTAR_BLOCK = BLOCKS.register("altar_block", () -> new AltarBlock(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> DEBUG_SOURCE = BLOCKS.register("debug_source_block", () -> new DebugEnergySourceBlock(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> GNOME_BOMB = BLOCKS.register("garden_gnome", () -> new GnomeBombBlock(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> ENERGY_RELAY = BLOCKS.register("energy_relay", () -> new RelayBlock(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> ADVANCED_ENERGY_RELAY = BLOCKS.register("advanced_energy_relay", () -> new AdvancedRelayBlock(BlockBehaviour.Properties.of()));
     
 }

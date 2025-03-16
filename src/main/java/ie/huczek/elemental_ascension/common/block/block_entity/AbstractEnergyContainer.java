@@ -11,16 +11,26 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractEnergyContainer extends BlockEntity implements IElementalEnergyContainer, EnergyReceiver {
+public abstract class AbstractEnergyContainer extends BlockEntity implements EnergyReceiver {
 
+    protected boolean isMultiplex;
     protected int[] energy = new int[ElementType.values().length];
     protected int maxCapacity;
+    public AbstractEnergyContainer(BlockEntityType<?> type, BlockPos pos, BlockState blockState, boolean isMultiplex) {
+        super(type, pos, blockState);
+        this.isMultiplex = isMultiplex;
+    }
+
     public AbstractEnergyContainer(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public void recieveEnergy(@NotNull ElementType energyType, int amount) {
+    public boolean recieveEnergy(@NotNull ElementType energyType, int amount) {
+        if (this.energy[energyType.ordinal()] >= maxCapacity) {
+            return false;
+        }
         this.energy[energyType.ordinal()] = Math.min(this.energy[energyType.ordinal()] + amount, getMaxCapacity());
+        return true;
     }
     
     public int getMaxCapacity() {
@@ -63,6 +73,10 @@ public abstract class AbstractEnergyContainer extends BlockEntity implements IEl
         }
     }
 
+    public boolean isMultiplex() {
+        return this.isMultiplex;
+    }
+
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
         super.saveAdditional(tag, registries);
@@ -71,5 +85,8 @@ public abstract class AbstractEnergyContainer extends BlockEntity implements IEl
                 tag.putInt(elementType.getName(), energy[elementType.ordinal()]);
             }
         }
+        this.setChanged();
     }
+
+
 }

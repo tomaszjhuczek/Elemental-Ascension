@@ -11,10 +11,10 @@ public enum ElementType {
     //Secondary Types
     LIGHT,
     DARK,
-    STRENGTH,
-    WEAKNESS,
     LIFE,
-    DEATH;
+    DEATH,
+    VOID,
+    ARCANE;
     
     @NotNull
     public String getName() {

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.logging.Logger;
 
 public class DebugWandItem extends Item {
-    
+
     public DebugWandItem(Properties properties) {
         super(properties.stacksTo(1));
     }
@@ -32,9 +32,10 @@ public class DebugWandItem extends Item {
         Block block = state.getBlock();
         BlockEntity blockEntity = level.getBlockEntity(pos);
         Player player = context.getPlayer();
+
         assert player != null;
         
-        if (level.isClientSide) {
+        if (!level.isClientSide) {
             if (block instanceof RuneBlock runeBlock) {
                 LOGGER.info(state.toString());
                 player.sendSystemMessage(Component.literal("Type: " + runeBlock.getRuneType().getName().toLowerCase()));
@@ -42,9 +43,10 @@ public class DebugWandItem extends Item {
             }
             if (blockEntity != null) {
                 LOGGER.info(blockEntity.toString());
-                if (blockEntity instanceof AbstractEnergyContainer) {
-                    LOGGER.info("Max Capacity: " + ((AbstractEnergyContainer) blockEntity).getMaxCapacity());
-                    LOGGER.info(((AbstractEnergyContainer) blockEntity).getEnergyStored().toString());
+                if (blockEntity instanceof AbstractEnergyContainer abstractEnergyContainer) {
+                    LOGGER.info("Max Capacity: " + abstractEnergyContainer.getMaxCapacity());
+                    LOGGER.info(abstractEnergyContainer.getEnergyStored().toString());
+                    LOGGER.info("Multiplex: " + abstractEnergyContainer.isMultiplex());
                     return InteractionResult.PASS;
                 }
             }
@@ -53,4 +55,5 @@ public class DebugWandItem extends Item {
         }
         return InteractionResult.PASS;
     }
+
 }

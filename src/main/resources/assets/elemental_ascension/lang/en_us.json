@@ -1,4 +1,9 @@
 {
   "item.elemental_ascension.debug_wand": "Debug Wand",
-  "block.elemental_ascension.garden_gnome": "\"Garden Gnome\""
+
+  "block.elemental_ascension.garden_gnome": "\"Garden Gnome\"",
+  "block.elemental_ascension.air_rune": "Air Rune",
+  "block.elemental_ascension.fire_rune": "Fire Rune",
+  "block.elemental_ascension.water_rune": "Water Rune",
+  "block.elemental_ascension.earth_rune": "Earth Rune"
 }

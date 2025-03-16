@@ -12,7 +12,7 @@ public interface EnergyReceiver {
     
     boolean isFull(ElementType elementType);
     
-    void recieveEnergy(ElementType elementType, int amount);
+    boolean recieveEnergy(ElementType elementType, int amount);
     
     
 }
