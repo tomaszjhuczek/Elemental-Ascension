@@ -30,4 +30,8 @@ public class VectorMathHelper {
     public static BlockPos arrayToVec(int[] pos) {
         return new BlockPos(pos[0], pos[1], pos[2]);
     }
+
+    public static String printCoords(BlockPos pos) {
+        return "[" + pos.getX() + "," + pos.getY() + "," + pos.getZ() + "]";
+    }
 }

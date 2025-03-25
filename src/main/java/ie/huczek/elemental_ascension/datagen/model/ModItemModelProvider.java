@@ -1,7 +1,5 @@
 package ie.huczek.elemental_ascension.datagen.model;
 
-import ie.huczek.elemental_ascension.ElementalAscension;
-import ie.huczek.elemental_ascension.common.registry.BlockRegistry;
 import ie.huczek.elemental_ascension.common.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

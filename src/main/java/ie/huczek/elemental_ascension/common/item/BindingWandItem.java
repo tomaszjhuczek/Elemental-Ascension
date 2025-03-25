@@ -1,14 +1,19 @@
 package ie.huczek.elemental_ascension.common.item;
 
 import ie.huczek.elemental_ascension.common.block.block_entity.ITransmittable;
+import ie.huczek.elemental_ascension.common.util.VectorMathHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+
+import java.util.List;
 
 import static ie.huczek.elemental_ascension.ElementalAscension.*;
 
@@ -21,6 +26,10 @@ public class BindingWandItem extends Item {
     private enum Mode {
         SELECTION,
         BINDING
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 
     public BindingWandItem(Properties properties) {
@@ -66,5 +75,14 @@ public class BindingWandItem extends Item {
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.FAIL;
+    }
+
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag tooltipFlag) {
+        if (this.mode == Mode.BINDING) {
+            tooltip.add(Component.literal("Stored Coordinates:"));
+            tooltip.add(Component.literal(VectorMathHelper.printCoords(sourcePos)));
+        }
     }
 }
