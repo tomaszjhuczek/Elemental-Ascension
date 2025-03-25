@@ -73,4 +73,5 @@ public abstract class AbstractEnergyTransmitter extends AbstractEnergyContainer 
         tag.putIntArray("target_block", VectorMathHelper.vecToArray(this.targetBlock));
     }
 
+
 }

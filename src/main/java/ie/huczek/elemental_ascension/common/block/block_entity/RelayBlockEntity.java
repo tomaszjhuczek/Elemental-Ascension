@@ -63,5 +63,8 @@ public class RelayBlockEntity extends AbstractEnergyTransmitter implements ITran
     public static void tick(Level level, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         RelayBlockEntity relayBlockEntity = (RelayBlockEntity) blockEntity;
         relayBlockEntity.checkAttunement(level, pos);
+        if (relayBlockEntity.attunement != null) {
+            relayBlockEntity.sendEnergy(level, relayBlockEntity.attunement);
+        }
     }
 }
